@@ -1586,7 +1586,7 @@ bool cLuxDebugHandler::ChangeDebugText(iWidget* apWidget, const cGuiMessageData&
 
 	else if(lNum == 13)  gpBase->mpPlayer->SetFreeCamActive(bActive);
 	else if(lNum == 14)  gpBase->mpPlayer->SetFreeCamSpeed( cMath::Max((float)aData.mlVal/ 100.0f, 0.001f) );
-	else if(lNum == 15)  static_cast<cRendererDeferred*>(gpBase->mpEngine->GetGraphics()->GetRenderer(eRenderer_Main))->SetDebugRenderFrameBuffers(bActive);
+	else if(lNum == 15)  cRendererDeferred::SetDebugRenderFrameBuffers(bActive);
 
 	else if(lNum == 17)  SetFastForward(bActive);
 	
