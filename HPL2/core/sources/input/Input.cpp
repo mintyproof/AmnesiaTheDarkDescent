@@ -27,10 +27,6 @@
 #include "input/ActionKeyboard.h"
 #include "input/ActionMouseButton.h"
 
-#if USE_XINPUT
-#include "impl/GamepadXInput.h"
-#endif
-
 #include "engine/Engine.h"
 
 namespace hpl 
@@ -80,22 +76,6 @@ namespace hpl
 	void cInput::Update(float afTimeStep)
 	{
 		mpLowLevelInput->BeginInputUpdate();
-
-		#if USE_XINPUT
-		for(int i=0; i < 4; ++i)
-		{
-			bool bConnected = cGamepadXInput::IsConnected(i);
-
-			if(bConnected == false && cGamepadXInput::GetWasConnected(i))
-			{
-				cEngine::SetDeviceWasRemoved();
-			}
-			else if(bConnected && cGamepadXInput::GetWasConnected(i) == false)
-			{
-				cEngine::SetDeviceWasPlugged();
-			}
-		}
-		#endif
 		
 		for(tInputDeviceListIt it = mlstInputDevices.begin(); it!= mlstInputDevices.end();++it)
 		{
@@ -219,28 +199,6 @@ namespace hpl
 			mlstInputDevices.remove(*it);
 		STLDeleteAll(mlstGamepads);
 
-#if USE_XINPUT
-		// First try with XInput
-		for(int i=0; i < 4; ++i)
-		{
-			bool bConnected = cGamepadXInput::IsConnected(i);
-
-			if(bConnected)
-			{
-				iGamepad* pGamepad = hplNew( cGamepadXInput, (i) );
-
-				mlstGamepads.push_back(pGamepad);
-				mlstInputDevices.push_back(pGamepad);
-			}
-
-			cGamepadXInput::SetWasConnected(i, bConnected);
-		}
-#else
-#ifndef USE_SDL2
-        // SDL2 supports hot plugging so no need to re-init
-		mpLowLevelInput->DropGamepadSupport();
-		mpLowLevelInput->InitGamepadSupport();
-#endif
 		for(int i=0; i<mpLowLevelInput->GetPluggedGamepadNum(); ++i)
 		{
 			iGamepad* pGamepad = mpLowLevelInput->CreateGamepad(i);
@@ -258,7 +216,6 @@ namespace hpl
 				}
 			}
 		}
-#endif
 	}
 
 	int cInput::GetGamepadNum()

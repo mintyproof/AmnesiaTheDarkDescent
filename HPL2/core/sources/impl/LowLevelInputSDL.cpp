@@ -21,7 +21,6 @@
 
 #include "impl/MouseSDL.h"
 #include "impl/KeyboardSDL.h"
-#include "impl/GamepadSDL.h"
 #include "impl/GamepadSDL2.h"
 
 #include "system/LowLevelSystem.h"
@@ -29,13 +28,8 @@
 
 #include "engine/Engine.h"
 
-#if USE_SDL2
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_syswm.h"
-#else
-#include "SDL/SDL.h"
-#include "SDL/SDL_syswm.h"
-#endif
 
 namespace hpl {
 
@@ -136,11 +130,7 @@ namespace hpl {
 
 	int cLowLevelInputSDL::GetPluggedGamepadNum()
 	{
-#if USE_XINPUT
-		return cGamepadXInput::GetNumConnected();
-#else
 		return SDL_NumJoysticks();
-#endif
 	}
 
 	//-----------------------------------------------------------------------
@@ -161,11 +151,7 @@ namespace hpl {
 
 	iGamepad* cLowLevelInputSDL::CreateGamepad(int alIndex)
 	{
-#if USE_SDL2
 		return hplNew( cGamepadSDL2, (this, alIndex) );
-#else
-		return hplNew( cGamepadSDL, (this, alIndex) );
-#endif
 	}
 	
 	//-----------------------------------------------------------------------

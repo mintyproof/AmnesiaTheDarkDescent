@@ -717,8 +717,6 @@ bool cLuxBase::InitApp()
 	
 	//Get the config file paths
 	msDefaultUserConfigPath = pInitCfg->GetStringW("ConfigFiles", "DefaultUserSettings",_W(""));
-#if USE_SDL2
-	
     msDefaultUserKeyConfigPath = pInitCfg->GetStringW("ConfigFiles", "DefaultUserKeysSDL2", _W(""));
 	msDefaultMainConfigPath = pInitCfg->GetStringW("ConfigFiles", "DefaultMainSettingsSDL2",_W(""));
 
@@ -768,10 +766,6 @@ bool cLuxBase::InitApp()
 			return false;
 		}
 	}
-#else
-	msDefaultUserKeyConfigPath = pInitCfg->GetStringW("ConfigFiles", "DefaultUserKeys", _W(""));
-	msDefaultMainConfigPath = pInitCfg->GetStringW("ConfigFiles", "DefaultMainSettings",_W(""));
-#endif
 
 	msGameConfigPath = pInitCfg->GetStringW("ConfigFiles", "Game",_W(""));
 	msMenuConfigPath = pInitCfg->GetStringW("ConfigFiles", "Menu",_W(""));

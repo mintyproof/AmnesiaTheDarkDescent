@@ -1039,9 +1039,6 @@
     <ClInclude Include="include\input\Gamepad.h">
       <Filter>Input</Filter>
     </ClInclude>
-    <ClInclude Include="include\impl\GamepadSDL.h">
-      <Filter>Impl\Input</Filter>
-    </ClInclude>
     <ClInclude Include="include\input\ActionGamepadButton.h">
       <Filter>Input</Filter>
     </ClInclude>
@@ -1053,9 +1050,6 @@
     </ClInclude>
     <ClInclude Include="include\gui\GuiPopUpUIKeyboard.h">
       <Filter>Gui</Filter>
-    </ClInclude>
-    <ClInclude Include="include\impl\GamepadXInput.h">
-      <Filter>Impl\Input</Filter>
     </ClInclude>
     <ClInclude Include="include\impl\MeshLoaderFBX.h">
       <Filter>Resources</Filter>
@@ -1914,9 +1908,6 @@
     <ClCompile Include="sources\input\Gamepad.cpp">
       <Filter>Input</Filter>
     </ClCompile>
-    <ClCompile Include="sources\impl\GamepadSDL.cpp">
-      <Filter>Impl\Input</Filter>
-    </ClCompile>
     <ClCompile Include="sources\input\ActionGamepadButton.cpp">
       <Filter>Input</Filter>
     </ClCompile>
@@ -1928,9 +1919,6 @@
     </ClCompile>
     <ClCompile Include="sources\gui\GuiPopUpUIKeyboard.cpp">
       <Filter>Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\impl\GamepadXInput.cpp">
-      <Filter>Impl\Input</Filter>
     </ClCompile>
     <ClCompile Include="sources\impl\MeshLoaderFBX.cpp">
       <Filter>Resources</Filter>
