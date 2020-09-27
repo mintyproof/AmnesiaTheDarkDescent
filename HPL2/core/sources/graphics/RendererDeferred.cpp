@@ -848,13 +848,12 @@ namespace hpl {
 		SetupGBuffer();
 
 		tRenderableFlag lVisibleFlags=0;
-		if(mpCurrentSettings->mbIsReflection)	lVisibleFlags |= eRenderableFlag_VisibleInReflection;
-		else									lVisibleFlags |= eRenderableFlag_VisibleInNonReflection;
+		if (mpCurrentSettings->mbIsReflection) lVisibleFlags |= eRenderableFlag_VisibleInReflection;
+		else								   lVisibleFlags |= eRenderableFlag_VisibleInNonReflection;
 		
 		///////////////////////////
 		//Occlusion testing
-		if(mpCurrentSettings->mbUseOcclusionCulling)
-		{
+		if (mpCurrentSettings->mbUseOcclusionCulling) {
 			CheckForVisibleObjectsAddToListAndRenderZ(	mpCurrentSettings->mpVisibleNodeTracker,eObjectVariabilityFlag_All, lVisibleFlags, 
 														true, NULL);
 
@@ -872,8 +871,7 @@ namespace hpl {
 		}
 		///////////////////////////
 		//Brute force
-		else
-		{
+		else {
 			CheckForVisibleAndAddToList(mpCurrentWorld->GetRenderableContainer(eWorldContainerType_Static), lVisibleFlags);
 			CheckForVisibleAndAddToList(mpCurrentWorld->GetRenderableContainer(eWorldContainerType_Dynamic), lVisibleFlags);
 			
@@ -891,8 +889,7 @@ namespace hpl {
 		}
 		
 		RenderGbuffer();
-		if(mbDebugRenderFrameBuffers)
-		{
+		if (mbDebugRenderFrameBuffers) {
 			RenderGbufferContent();
 			return;
 		}
@@ -903,17 +900,7 @@ namespace hpl {
 
 		//RenderDeferredSkyBox();
 
-		/*if(mpCurrentSettings->mbIsReflection)
-		{
-			RenderGbufferContent(); //Debug, used to see what gbuffers contain
-			return;
-		}*/
 		RenderLights();
-		
-		//Debug:
-		//RenderSSAO();
-		//return;
-
 
 		RenderIllumination();
 
@@ -932,12 +919,11 @@ namespace hpl {
 
 		RunCallback(eRendererMessage_PostTranslucent);
 
-		if(mbOcclusionTestLargeLights)
+		if (mbOcclusionTestLargeLights)
 			RetrieveAllLightOcclusionPair(false); //false = we do not stop and wait.
 
 		//Debug for testing reflection!
-		/*if(mpCurrentSettings->mbIsReflection==false)
-		{
+		/*if(mpCurrentSettings->mbIsReflection==false) {
 			RenderReflectionContent();
 			return;
 		}*/

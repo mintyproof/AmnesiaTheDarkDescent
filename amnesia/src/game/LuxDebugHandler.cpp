@@ -122,6 +122,7 @@ void cLuxDebugHandler::LoadUserConfig()
 	mbInspectionMode = gpBase->mpUserConfig->GetBool("Debug", "InspectionMode", false);
 	mbDisableFlashBacks = gpBase->mpUserConfig->GetBool("Debug", "DisableFlashBacks", false);
 	mbDrawPhysics = gpBase->mpUserConfig->GetBool("Debug", "DrawPhysics", false);
+	mbDebugGBuffer = gpBase->mpUserConfig->GetBool("Debug", "DebugGBuffer", false);
 
 	mbReloadFromCurrentPosition = gpBase->mpUserConfig->GetBool("Debug", "ReloadFromCurrentPosition", true);
 
@@ -164,6 +165,7 @@ void cLuxDebugHandler::SaveUserConfig()
 	 gpBase->mpUserConfig->SetBool("Debug", "InspectionMode", mbInspectionMode);
 	 gpBase->mpUserConfig->SetBool("Debug", "DisableFlashBacks", mbDisableFlashBacks);
 	 gpBase->mpUserConfig->SetBool("Debug", "DrawPhysics", mbDrawPhysics);
+	 gpBase->mpUserConfig->SetBool("Debug", "DebugGBuffer", mbDebugGBuffer);
 
 	 gpBase->mpUserConfig->SetBool("Debug", "ReloadFromCurrentPosition", mbReloadFromCurrentPosition);
 
@@ -1032,11 +1034,18 @@ void cLuxDebugHandler::CreateGuiWindow()
 		pCheckBox->SetUserValue(6);
 		pCheckBox->AddCallback(eGuiMessage_CheckChange,this, kGuiCallback(ChangeDebugText));
 		vGroupPos.y += 22;
-
+		
 		//Physics debug drawing
 		pCheckBox = mpGuiSet->CreateWidgetCheckBox(vGroupPos, vSize, _W("Draw physics debug"), pGroup);
 		pCheckBox->SetChecked(mbDrawPhysics);
 		pCheckBox->SetUserValue(11);
+		pCheckBox->AddCallback(eGuiMessage_CheckChange,this, kGuiCallback(ChangeDebugText));
+		vGroupPos.y += 22;
+
+		//GBuffer debug drawing
+		pCheckBox = mpGuiSet->CreateWidgetCheckBox(vGroupPos, vSize, _W("Debug G-Buffers"), pGroup);
+		pCheckBox->SetChecked(mbDebugGBuffer);
+		pCheckBox->SetUserValue(15);
 		pCheckBox->AddCallback(eGuiMessage_CheckChange,this, kGuiCallback(ChangeDebugText));
 		vGroupPos.y += 22;
 
@@ -1561,7 +1570,7 @@ bool cLuxDebugHandler::ChangeDebugText(iWidget* apWidget, const cGuiMessageData&
 	int lNum = apWidget->GetUserValue();
 	bool bActive = aData.mlVal == 1;
 
-    if(lNum == 0)		mbShowFPS = bActive;
+    if(lNum == 0)		 mbShowFPS = bActive;
 	else if(lNum == 1)	 mbShowPlayerInfo = bActive;
 	else if(lNum == 2)	 mbShowEntityInfo = bActive;
 	else if(lNum == 3)	 mbShowSoundPlaying = bActive;
@@ -1577,6 +1586,7 @@ bool cLuxDebugHandler::ChangeDebugText(iWidget* apWidget, const cGuiMessageData&
 
 	else if(lNum == 13)  gpBase->mpPlayer->SetFreeCamActive(bActive);
 	else if(lNum == 14)  gpBase->mpPlayer->SetFreeCamSpeed( cMath::Max((float)aData.mlVal/ 100.0f, 0.001f) );
+	else if(lNum == 15)  static_cast<cRendererDeferred*>(gpBase->mpEngine->GetGraphics()->GetRenderer(eRenderer_Main))->SetDebugRenderFrameBuffers(bActive);
 
 	else if(lNum == 17)  SetFastForward(bActive);
 	
