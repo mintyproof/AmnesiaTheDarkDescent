@@ -92,9 +92,7 @@ namespace hpl {
 
 			if(	pEvent->type != SDL_MOUSEMOTION && 
 				pEvent->type != SDL_MOUSEBUTTONDOWN &&
-#if SDL_VERSION_ATLEAST(2, 0, 0)
                 pEvent->type != SDL_MOUSEWHEEL &&
-#endif
 				pEvent->type != SDL_MOUSEBUTTONUP)
 			{
 				continue;
@@ -102,7 +100,6 @@ namespace hpl {
 
 			if(pEvent->type == SDL_MOUSEMOTION)
 			{
-#if SDL_VERSION_ATLEAST(2, 0, 0) && WIN32
 				/*if(pLowLevelGfx->GetFullscreenModeActive() == false)
 				{
 					/////////////
@@ -110,9 +107,6 @@ namespace hpl {
 					mvMouseAbsPos = cVector2l(pEvent->motion.x,pEvent->motion.y);
 				}*/
 				mvMouseAbsPos = cVector2l(pEvent->motion.x,pEvent->motion.y);
-#else
-				mvMouseAbsPos = cVector2l(pEvent->motion.x,pEvent->motion.y);
-#endif
 				
 				Uint8 buttonState = pEvent->motion.state;
 
@@ -121,7 +115,6 @@ namespace hpl {
 				if(buttonState & SDL_BUTTON(2)) mvMButtonArray[eMouseButton_Middle] = true;
 				if(buttonState & SDL_BUTTON(3)) mvMButtonArray[eMouseButton_Right] = true;*/
 			}
-#if SDL_VERSION_ATLEAST(2, 0, 0)
             else if(pEvent->type == SDL_MOUSEWHEEL)
             {
                 if (pEvent->wheel.y > 0) {
@@ -133,7 +126,6 @@ namespace hpl {
                 }
                 break;
             }
-#endif
 			else
 			{
 				bool bButtonIsDown = pEvent->type==SDL_MOUSEBUTTONDOWN;
@@ -147,16 +139,6 @@ namespace hpl {
 					case SDL_BUTTON_RIGHT: mvMButtonArray[eMouseButton_Right] = bButtonIsDown;break;
 					case SDL_BUTTON_X1: mvMButtonArray[eMouseButton_Button6] = bButtonIsDown;break;
 					case SDL_BUTTON_X2: mvMButtonArray[eMouseButton_Button7] = bButtonIsDown;break;
-#if !SDL_VERSION_ATLEAST(2, 0, 0)
-					case SDL_BUTTON_WHEELUP: 
-						mvMButtonArray[eMouseButton_WheelUp] = bButtonIsDown;
-						if(bButtonIsDown) mbWheelUpMoved = true;
-						break;
-					case SDL_BUTTON_WHEELDOWN: 
-						mvMButtonArray[eMouseButton_WheelDown] = bButtonIsDown;
-						if(bButtonIsDown) mbWheelDownMoved = true;
-						break;
-#endif
 				}
 			}
 		}
