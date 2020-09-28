@@ -39,6 +39,7 @@ namespace hpl {
 	class cSound;
 	class cPhysics;
 	class cHaptic;
+	class cVirtualReality;
 	class cGui;
 
 	class cCamera;
@@ -72,7 +73,7 @@ namespace hpl {
 	{
 	public:
 		cScene(cGraphics *apGraphics,cResources *apResources, cSound* apSound, cPhysics *apPhysics,
-				cSystem *apSystem, cAI *apAI,cGui *apGui, cHaptic *apHaptic);
+				cSystem *apSystem, cAI *apAI,cGui *apGui, cHaptic *apHaptic, cVirtualReality* apVirtualReality);
 		~cScene();
 
 		void Reset();
@@ -117,6 +118,7 @@ namespace hpl {
 		cAI *mpAI;
 		cGui *mpGui;
 		cHaptic *mpHaptic;
+		cVirtualReality* mpVirtualReality;
 
 		cViewport *mpCurrentListener;
 

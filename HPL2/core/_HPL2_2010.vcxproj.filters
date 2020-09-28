@@ -73,6 +73,9 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{0276fcca-4f7b-4ed6-9450-82896f0b1ffc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Impl\VR">
+      <UniqueIdentifier>{e7fdc3b1-3425-4c7a-a59b-6a5871be07eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\system\BinTree.h">
@@ -1054,6 +1057,15 @@
     <ClInclude Include="include\impl\GamepadSDL2.h">
       <Filter>Impl\Input</Filter>
     </ClInclude>
+    <ClInclude Include="include\vr\LowLevelVirtualReality.h">
+      <Filter>Impl\VR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\impl\LowLevelVirtualRealityOpenVR.h">
+      <Filter>Impl\VR</Filter>
+    </ClInclude>
+    <ClInclude Include="include\vr\VirtualReality.h">
+      <Filter>Impl\VR</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sources\system\Container.cpp">
@@ -1919,6 +1931,12 @@
     </ClCompile>
     <ClCompile Include="sources\impl\GamepadSDL2.cpp">
       <Filter>Impl\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\impl\VirtualReality.cpp">
+      <Filter>Impl\VR</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\impl\LowLevelVirtualRealityOpenVR.cpp">
+      <Filter>Impl\VR</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

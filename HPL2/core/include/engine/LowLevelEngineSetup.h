@@ -32,6 +32,7 @@ namespace hpl {
 	class cAI;
 	class cHaptic;
 	class cGui;
+	class cVirtualReality;
 
 	class iLowLevelEngineSetup
 	{
@@ -43,11 +44,12 @@ namespace hpl {
 		virtual cGraphics* CreateGraphics()=0;
 		virtual cResources* CreateResources(cGraphics* apGraphics)=0;
 		virtual cScene* CreateScene(cGraphics* apGraphics, cResources* apResources, cSound* apSound,
-									cPhysics *apPhysics, cSystem *apSystem,cAI *apAI,cGui *apGui,cHaptic *apHaptic)=0;
+									cPhysics *apPhysics, cSystem *apSystem,cAI *apAI,cGui *apGui,cHaptic *apHaptic,cVirtualReality* apVirtualReality)=0;
 		virtual cSound* CreateSound()=0;
 		virtual cPhysics* CreatePhysics()=0;
 		virtual cAI* CreateAI()=0;
 		virtual cHaptic* CreateHaptic()=0;
+		virtual cVirtualReality* CreateVirtualReality() = 0;
 	};
 };
 #endif // HPL_LOWLEVELENGINESETUP_H

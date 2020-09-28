@@ -27,6 +27,7 @@
 #include "graphics/Graphics.h"
 #include "gui/Gui.h"
 #include "haptic/Haptic.h"
+#include "vr/VirtualReality.h"
 #include "scene/Scene.h"
 #include "generate/Generate.h"
 
@@ -260,9 +261,16 @@ namespace hpl {
 		mpHaptic = NULL;
 #endif
 
+		Log(" Creating virtual reality module\n");
+#ifdef USE_VR
+		mpVirtualReality = mpGameSetup->CreateVirtualReality();
+#else
+		mpVirtualReality = NULL;
+#endif
+
 
 		Log(" Creating scene module\n");
-		mpScene = mpGameSetup->CreateScene(mpGraphics, mpResources, mpSound,mpPhysics,mpSystem,mpAI,mpGui,mpHaptic);
+		mpScene = mpGameSetup->CreateScene(mpGraphics, mpResources, mpSound,mpPhysics,mpSystem,mpAI,mpGui,mpHaptic,mpVirtualReality);
 
 		Log("--------------------------------------------------------\n\n");
 
@@ -309,7 +317,10 @@ namespace hpl {
 
 
 		//Init haptic
-		if(mpHaptic) mpHaptic->Init(mpResources);
+		if (mpHaptic) mpHaptic->Init(mpResources);
+
+		//Init VR
+		if (mpVirtualReality) mpVirtualReality->Init(mpResources);
 
 		Log("Initializing Game Module\n");
 		Log("--------------------------------------------------------\n");

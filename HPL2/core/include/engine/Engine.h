@@ -39,6 +39,7 @@ namespace hpl {
 	class cPhysics;
 	class cAI;
 	class cHaptic;
+	class cVirtualReality;
 	class cGui;
 	class cGenerate;
 	class cEngine;
@@ -126,6 +127,7 @@ namespace hpl {
 		cAI* GetAI(){ return mpAI;}
 		cGui* GetGui(){ return mpGui;}
 		cHaptic* GetHaptic(){ return mpHaptic;}
+		cVirtualReality* GetVirtualReality() { return mpVirtualReality; }
 		cGenerate* GetGenerate(){ return mpGenerate;}
 		
 		void ResetLogicTimer();
@@ -234,6 +236,7 @@ namespace hpl {
 		cPhysics *mpPhysics;
 		cAI *mpAI;
 		cHaptic *mpHaptic;
+		cVirtualReality* mpVirtualReality;
 		cGui *mpGui;
 		cGenerate* mpGenerate;
 	};

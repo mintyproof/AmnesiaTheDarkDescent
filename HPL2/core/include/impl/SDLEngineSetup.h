@@ -32,6 +32,7 @@ namespace hpl {
 	class iLowLevelSound;
 	class iLowLevelPhysics;
 	class iLowLevelHaptic;
+	class iLowLevelVirtualReality;
 
 	class cSDLEngineSetup : public iLowLevelEngineSetup
 	{
@@ -44,12 +45,12 @@ namespace hpl {
 		cGraphics* CreateGraphics();
 		cResources* CreateResources(cGraphics* apGraphics);
 		cScene* CreateScene(cGraphics* apGraphics, cResources* apResources, cSound* apSound,
-							cPhysics *apPhysics, cSystem *apSystem,cAI *apAI,cGui *apGui,cHaptic *apHaptic);
+							cPhysics *apPhysics, cSystem *apSystem,cAI *apAI,cGui *apGui,cHaptic *apHaptic, cVirtualReality* apVirtualReality);
 		cSound* CreateSound();
 		cPhysics* CreatePhysics();
 		cAI* CreateAI();
 		cHaptic* CreateHaptic();
-
+		cVirtualReality* CreateVirtualReality();
 	private:
 		iLowLevelSystem *mpLowLevelSystem;
 		iLowLevelGraphics *mpLowLevelGraphics;
@@ -62,6 +63,7 @@ namespace hpl {
 //		#endif
 		iLowLevelPhysics* mpLowLevelPhysics;
 		iLowLevelHaptic* mpLowLevelHaptic;
+		iLowLevelVirtualReality* mpLowLevelVirtualReality;
 	};
 };
 #endif // HPL_SDL_ENGINESETUP_H

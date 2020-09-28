@@ -47,6 +47,8 @@
 
 #include "physics/Physics.h"
 
+#include "vr/VirtualReality.h"
+
 
 namespace hpl {
 
@@ -57,7 +59,7 @@ namespace hpl {
 	//-----------------------------------------------------------------------
 
 	cScene::cScene(cGraphics *apGraphics,cResources *apResources, cSound* apSound,cPhysics *apPhysics,
-					cSystem *apSystem, cAI *apAI,cGui *apGui, cHaptic *apHaptic)
+					cSystem *apSystem, cAI *apAI,cGui *apGui, cHaptic *apHaptic, cVirtualReality* apVirtualReality)
 		: iUpdateable("HPL_Scene")
 	{
 		mpGraphics = apGraphics;
@@ -68,6 +70,7 @@ namespace hpl {
 		mpAI = apAI;
 		mpGui = apGui;
 		mpHaptic = apHaptic;
+		mpVirtualReality = apVirtualReality;
 
 		mpCurrentListener = NULL;
 	}

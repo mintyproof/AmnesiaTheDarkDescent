@@ -28,6 +28,7 @@
 #include "physics/Physics.h"
 #include "ai/AI.h"
 #include "haptic/Haptic.h"
+#include "vr/VirtualReality.h"
 
 #include "impl/KeyboardSDL.h"
 #include "impl/MouseSDL.h"
@@ -41,6 +42,10 @@
 
 #ifdef INCLUDE_HAPTIC 
 	#include "impl/LowLevelHapticHaptX.h"
+#endif
+
+#ifdef USE_VR
+	#include "impl/LowLevelVirtualRealityOpenVR.h"
 #endif
 
 #include "SDL2/SDL.h"
@@ -97,13 +102,21 @@ namespace hpl {
 		//////////////////////////
 		// Physics
 		mpLowLevelPhysics = hplNew( cLowLevelPhysicsNewton,() );
-		
+
 		//////////////////////////
 		// Haptic
 #ifdef INCLUDE_HAPTIC 
-		mpLowLevelHaptic = hplNew( cLowLevelHapticHaptX,() );
+		mpLowLevelHaptic = hplNew(cLowLevelHapticHaptX, ());
 #else 
 		mpLowLevelHaptic = NULL;
+#endif
+
+		//////////////////////////
+		// Haptic
+#ifdef USE_VR 
+		mpLowLevelVirtualReality = hplNew(cLowLevelVirtualRealityOpenVR, ());
+#else 
+		mpLowLevelVirtualReality = NULL;
 #endif
 		
 	}
@@ -130,6 +143,9 @@ namespace hpl {
 #ifdef INCLUDE_HAPTIC 	
 		hplDelete(mpLowLevelHaptic);
 #endif
+#ifdef USE_VR
+		hplDelete(mpLowLevelVirtualReality);
+#endif
 
         SDL_EnableScreenSaver();
 		SDL_Quit();
@@ -145,9 +161,9 @@ namespace hpl {
 	
 	cScene* cSDLEngineSetup::CreateScene(cGraphics* apGraphics, cResources *apResources, cSound* apSound,
 										cPhysics *apPhysics, cSystem *apSystem,cAI *apAI,cGui *apGui,
-										cHaptic *apHaptic)
+										cHaptic *apHaptic, cVirtualReality* apVirtualReality)
 	{
-		cScene *pScene = hplNew( cScene, (apGraphics,apResources, apSound,apPhysics, apSystem,apAI,apGui,apHaptic) );
+		cScene *pScene = hplNew( cScene, (apGraphics,apResources, apSound,apPhysics, apSystem,apAI,apGui,apHaptic,apVirtualReality) );
 		return pScene;
 	}
 
@@ -218,6 +234,13 @@ namespace hpl {
 	{
 		cHaptic *pHaptic = hplNew( cHaptic, (mpLowLevelHaptic) );
 		return pHaptic;
+	}
+
+	//-----------------------------------------------------------------------
+
+	cVirtualReality* cSDLEngineSetup::CreateVirtualReality() {
+		cVirtualReality* pVirtualReality = hplNew(cVirtualReality, (mpLowLevelVirtualReality));
+		return pVirtualReality;
 	}
 
 	//-----------------------------------------------------------------------
