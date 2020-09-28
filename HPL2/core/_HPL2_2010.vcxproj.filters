@@ -1051,9 +1051,6 @@
     <ClInclude Include="include\gui\GuiPopUpUIKeyboard.h">
       <Filter>Gui</Filter>
     </ClInclude>
-    <ClInclude Include="include\impl\MeshLoaderFBX.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="include\impl\GamepadSDL2.h">
       <Filter>Impl\Input</Filter>
     </ClInclude>
@@ -1919,9 +1916,6 @@
     </ClCompile>
     <ClCompile Include="sources\gui\GuiPopUpUIKeyboard.cpp">
       <Filter>Gui</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\impl\MeshLoaderFBX.cpp">
-      <Filter>Resources</Filter>
     </ClCompile>
     <ClCompile Include="sources\impl\GamepadSDL2.cpp">
       <Filter>Impl\Input</Filter>
