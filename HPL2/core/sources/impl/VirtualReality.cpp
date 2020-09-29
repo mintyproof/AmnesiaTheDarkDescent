@@ -36,7 +36,6 @@ namespace hpl {
 	//-----------------------------------------------------------------------
 
 	void cVirtualReality::Update(float afTimeStep) {
-		mpLowLevelVirtualReality->Update(afTimeStep);
 	}
 
 	//-----------------------------------------------------------------------
@@ -44,9 +43,6 @@ namespace hpl {
 	void cVirtualReality::Init(cResources* apResources) {
 		Log("Initializing Virtual Reality Module\n");
 		Log("--------------------------------------------------------\n");
-
-		if (mpLowLevelVirtualReality->Init(apResources) == false) {
-		}
 
 		Log("--------------------------------------------------------\n\n");
 	}

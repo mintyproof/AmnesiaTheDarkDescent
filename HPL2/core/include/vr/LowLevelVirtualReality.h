@@ -6,11 +6,7 @@
 namespace hpl {
 	class iLowLevelVirtualReality {
 	public:
-		iLowLevelVirtualReality();
-		virtual ~iLowLevelVirtualReality();
-
-		void Update(float afTimeStep);
-		bool Init(cResources* apResources);
+		virtual ~iLowLevelVirtualReality() {}
 	};
 }
 

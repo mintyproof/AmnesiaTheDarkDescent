@@ -3,6 +3,8 @@
 
 #include "vr/LowLevelVirtualReality.h"
 
+#include <openvr.h>
+
 namespace hpl {
 	class cLowLevelVirtualRealityOpenVR : public iLowLevelVirtualReality {
 	public:
