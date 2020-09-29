@@ -1,9 +1,8 @@
 #ifndef HPL_VIRTUAL_REALITY_H
 #define HPL_VIRTUAL_REALITY_H
 
-#ifdef USE_VR
-
 #include "engine/Updateable.h"
+#include "math/MathTypes.h"
 
 namespace hpl {
 	class iLowLevelVirtualReality;
@@ -14,13 +13,14 @@ namespace hpl {
 		cVirtualReality(iLowLevelVirtualReality* apLowLevelVirtualReality);
 		~cVirtualReality();
 		
+		cVector3f GetHMDPosition();
+		cVector3f GetHMDRotation();
+
 		void Update(float afTimeStep);
 		void Init(cResources* apResources);
 	protected:
 		iLowLevelVirtualReality* mpLowLevelVirtualReality;
 	};
 }
-
-#endif // USE_VR
 
 #endif // HPL_VIRTUAL_REALITY_H

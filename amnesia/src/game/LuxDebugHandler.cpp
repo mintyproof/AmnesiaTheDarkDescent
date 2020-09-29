@@ -42,7 +42,6 @@
 
 #include "scene/RenderableContainer_DynBoxTree.h"
 
-
 //////////////////////////////////////////////////////////////////////////
 // STATIC FUNCTIONS
 //////////////////////////////////////////////////////////////////////////
@@ -394,6 +393,17 @@ void cLuxDebugHandler::OnDraw(float afFrameTime)
 			_W("FrameTime: %.1fms FPS: %.1f\n"),gpBase->mpEngine->GetAvgFrameTimeInMS(), gpBase->mpEngine->GetFPS());
 		fY+=13.0f;
 	}
+
+	////////////////////
+	// VR debug
+	cVector3f vHMDPosition = gpBase->mpEngine->GetVirtualReality()->GetHMDPosition();
+	cVector3f vHMDRotation = gpBase->mpEngine->GetVirtualReality()->GetHMDRotation();
+	gpBase->mpGameDebugSet->DrawFont(gpBase->mpDefaultFont, cVector3f(5, fY, 10), 14, cColor(1, 1),
+		_W("VR HMD position: %.3f, %.3f, %.3f\n"), vHMDPosition.x, vHMDPosition.y, vHMDPosition.z);
+	fY += 13.0f;
+	gpBase->mpGameDebugSet->DrawFont(gpBase->mpDefaultFont, cVector3f(5, fY, 10), 14, cColor(1, 1),
+		_W("VR HMD rotation: %.3f, %.3f, %.3f\n"), vHMDRotation.x, vHMDRotation.y, vHMDRotation.z);
+	fY += 13.0f;
 
 	////////////////////
 	// Messages

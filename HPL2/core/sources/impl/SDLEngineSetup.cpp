@@ -112,7 +112,7 @@ namespace hpl {
 #endif
 
 		//////////////////////////
-		// Haptic
+		// Virtual reality
 #ifdef USE_VR 
 		mpLowLevelVirtualReality = hplNew(cLowLevelVirtualRealityOpenVR, ());
 #else 

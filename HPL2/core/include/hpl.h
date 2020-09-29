@@ -215,4 +215,6 @@
 #include "haptic/HapticForce.h"
 #include "haptic/HapticSurface.h"
 
+#include "vr/VirtualReality.h"
+
 #endif // HPL_HPL_H

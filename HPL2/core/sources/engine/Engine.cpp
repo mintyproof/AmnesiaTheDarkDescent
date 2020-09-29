@@ -337,7 +337,8 @@ namespace hpl {
 		mpUpdater->AddGlobalUpdate(mpAI);
 		mpUpdater->AddGlobalUpdate(mpGui);
 		mpUpdater->AddGlobalUpdate(mpResources);
-		if(mpHaptic) mpUpdater->AddGlobalUpdate(mpHaptic);
+		if (mpHaptic) mpUpdater->AddGlobalUpdate(mpHaptic);
+		if (mpVirtualReality) mpUpdater->AddGlobalUpdate(mpVirtualReality);
 
 		//Setup the "default" updater container
 		mpUpdater->AddContainer("Default");

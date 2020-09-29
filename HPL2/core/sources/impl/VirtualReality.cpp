@@ -1,5 +1,3 @@
-#ifdef USE_VR
-
 #include "vr/VirtualReality.h"
 #include "system/LowLevelSystem.h"
 #include "vr/LowLevelVirtualReality.h"
@@ -14,7 +12,6 @@ namespace hpl {
 
 	cVirtualReality::cVirtualReality(iLowLevelVirtualReality* apLowLevelVirtualReality) : iUpdateable("HPL_VirtualReality") {
 		mpLowLevelVirtualReality = apLowLevelVirtualReality;
-		
 	}
 
 	//-----------------------------------------------------------------------
@@ -35,7 +32,20 @@ namespace hpl {
 
 	//-----------------------------------------------------------------------
 
+	cVector3f cVirtualReality::GetHMDPosition() {
+		return mpLowLevelVirtualReality->GetHMDPosition();
+	}
+
+	//-----------------------------------------------------------------------
+
+	cVector3f cVirtualReality::GetHMDRotation() {
+		return mpLowLevelVirtualReality->GetHMDRotation();
+	}
+
+	//-----------------------------------------------------------------------
+
 	void cVirtualReality::Update(float afTimeStep) {
+		mpLowLevelVirtualReality->Update();
 	}
 
 	//-----------------------------------------------------------------------
@@ -50,5 +60,3 @@ namespace hpl {
 	//-----------------------------------------------------------------------
 
 }
-
-#endif // USE_VR

@@ -79,7 +79,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>legacy_stdio_definitions.lib;HPL2_2010_Debug.lib;fltk.lib;wsock32.lib;comctl32.lib;xinput.lib;zlibwapi.lib;dbghelp.lib;Wininet.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;HPL2_2010_Debug.lib;fltk.lib;wsock32.lib;comctl32.lib;xinput.lib;zlibwapi.lib;dbghelp.lib;Wininet.lib;openvr_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\HPL2\lib; ..\..\..\HPL2\dependencies\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreEmbeddedIDL>false</IgnoreEmbeddedIDL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
