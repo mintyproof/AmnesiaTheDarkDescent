@@ -23,11 +23,7 @@
 
 #include "system/LowLevelSystem.h"
 
-#if USE_SDL2
 #include "SDL2/SDL.h"
-#else
-#include "SDL/SDL.h"
-#endif
 
 #include "impl/TimerSDL.h"
 #include "impl/ThreadSDL.h"
@@ -57,10 +53,8 @@ namespace hpl {
 
 	void cPlatform::CopyTextToClipboard(const tWString &asText)
 	{
-#if SDL_VERSION_ATLEAST(2, 0, 0)
         tString tstr = cString::S16BitToUTF8(asText);
         SDL_SetClipboardText(tstr.c_str());
-#endif
 	}
 
 	//-----------------------------------------------------------------------
@@ -68,7 +62,7 @@ namespace hpl {
 	tWString cPlatform::LoadTextFromClipboard()
 	{
         tWString tstr;
-#if SDL_VERSION_ATLEAST(2, 0, 0)
+
         if (SDL_HasClipboardText()) {
             // Gets utf8 encoded text
             char * clip = SDL_GetClipboardText();
@@ -77,7 +71,7 @@ namespace hpl {
                 SDL_free(clip);
             }
         }
-#endif
+
 		return tstr;
 	}
 
@@ -97,7 +91,6 @@ namespace hpl {
 	//-----------------------------------------------------------------------
 	void cPlatform::GetAvailableVideoModes(tVideoModeVec& avDestVidModes, int alMinBpp, int alMinRefreshRate)
 	{
-#if SDL_VERSION_ATLEAST(2, 0, 0)
         int ndisplays = SDL_GetNumVideoDisplays();
 
         std::set<cVideoMode, VideoComp> uniqVideoModes;
@@ -130,18 +123,6 @@ namespace hpl {
         }
 
         avDestVidModes.assign(uniqVideoModes.begin(), uniqVideoModes.end());
-#else
-		const SDL_VideoInfo *info = SDL_GetVideoInfo();
-        if (!info) return;
-		SDL_Rect **modes = SDL_ListModes(info->vfmt, SDL_OPENGL | SDL_FULLSCREEN);
-		avDestVidModes.clear();
-		if (modes == NULL) return;
-		for (int i=0; modes[i]; i++)
-		{
-			avDestVidModes.push_back(cVideoMode(cVector2l(modes[i]->w, modes[i]->h),info->vfmt->BitsPerPixel,1));
-		}
-		sort(avDestVidModes.begin(), avDestVidModes.end(), VideoComp());
-#endif
 	}
 
     tWString cPlatform::GetDisplayName(int alDisplay)
