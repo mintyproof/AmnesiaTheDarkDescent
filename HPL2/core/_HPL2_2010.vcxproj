@@ -150,6 +150,8 @@
   <ItemGroup>
     <ClInclude Include="include\impl\GamepadSDL2.h" />
     <ClInclude Include="include\gui\GuiPopUpUIKeyboard.h" />
+    <ClInclude Include="include\impl\MutexSDL.h" />
+    <ClInclude Include="include\impl\ThreadSDL.h" />
     <ClInclude Include="include\input\ActionGamepadAxis.h" />
     <ClInclude Include="include\input\ActionGamepadButton.h" />
     <ClInclude Include="include\input\ActionGamepadHat.h" />
@@ -316,11 +318,9 @@
     <ClInclude Include="include\impl\LowLevelInputSDL.h" />
     <ClInclude Include="include\impl\MouseSDL.h" />
     <ClInclude Include="include\impl\LowLevelSystemSDL.h" />
-    <ClInclude Include="include\impl\MutexWin32.h" />
     <ClInclude Include="include\impl\scripthelper.h" />
     <ClInclude Include="include\impl\scriptstring.h" />
     <ClInclude Include="include\impl\SqScript.h" />
-    <ClInclude Include="include\impl\ThreadWin32.h" />
     <ClInclude Include="include\impl\TimerSDL.h" />
     <ClInclude Include="include\impl\SDLEngineSetup.h" />
     <ClInclude Include="include\impl\CharacterBodyNewton.h" />
@@ -479,6 +479,9 @@
   <ItemGroup>
     <ClCompile Include="sources\impl\GamepadSDL2.cpp" />
     <ClCompile Include="sources\gui\GuiPopUpUIKeyboard.cpp" />
+    <ClCompile Include="sources\impl\MutexSDL.cpp" />
+    <ClCompile Include="sources\impl\PlatformSDL.cpp" />
+    <ClCompile Include="sources\impl\ThreadSDL.cpp" />
     <ClCompile Include="sources\input\ActionGamepadAxis.cpp" />
     <ClCompile Include="sources\input\ActionGamepadButton.cpp" />
     <ClCompile Include="sources\input\ActionGamepadHat.cpp" />
@@ -624,13 +627,11 @@
     <ClCompile Include="sources\impl\LowLevelInputSDL.cpp" />
     <ClCompile Include="sources\impl\MouseSDL.cpp" />
     <ClCompile Include="sources\impl\LowLevelSystemSDL.cpp" />
-    <ClCompile Include="sources\impl\MutexWin32.cpp" />
     <ClCompile Include="sources\impl\PlatformWin32.cpp" />
     <ClCompile Include="sources\impl\scripthelper.cpp" />
     <ClCompile Include="sources\impl\scriptstring.cpp" />
     <ClCompile Include="sources\impl\scriptstring_utils.cpp" />
     <ClCompile Include="sources\impl\SqScript.cpp" />
-    <ClCompile Include="sources\impl\ThreadWin32.cpp" />
     <ClCompile Include="sources\impl\TimerSDL.cpp" />
     <ClCompile Include="sources\impl\SDLEngineSetup.cpp" />
     <ClCompile Include="sources\impl\CharacterBodyNewton.cpp" />

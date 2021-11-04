@@ -40,8 +40,8 @@
 #include <SDL2/SDL.h>
 
 #include "impl/TimerSDL.h"
-#include "impl/ThreadWin32.h"
-#include "impl/MutexWin32.h"
+#include "impl/ThreadSDL.h"
+#include "impl/MutexSDL.h"
 
 #include <algorithm>
 
@@ -672,7 +672,7 @@ namespace hpl {
 
 	iThread* cPlatform::CreateThread(iThreadClass* apThreadClass)
 	{
-		iThread* pThread = hplNew(cThreadWin32, ());
+		iThread* pThread = hplNew(cThreadSDL, ());
 		pThread->SetThreadClass(apThreadClass);
 
 		return pThread;
@@ -682,7 +682,7 @@ namespace hpl {
 
 	iMutex* cPlatform::CreateMutEx()
 	{
-		return hplNew(cMutexWin32, ());
+		return hplNew(cMutexSDL, ());
 	}
 
 

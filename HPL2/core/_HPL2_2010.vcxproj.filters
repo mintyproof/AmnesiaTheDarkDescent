@@ -561,9 +561,6 @@
     <ClInclude Include="include\impl\LowLevelSystemSDL.h">
       <Filter>Impl\System</Filter>
     </ClInclude>
-    <ClInclude Include="include\impl\MutexWin32.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
     <ClInclude Include="include\impl\scripthelper.h">
       <Filter>Impl\System</Filter>
     </ClInclude>
@@ -571,9 +568,6 @@
       <Filter>Impl\System</Filter>
     </ClInclude>
     <ClInclude Include="include\impl\SqScript.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
-    <ClInclude Include="include\impl\ThreadWin32.h">
       <Filter>Impl\System</Filter>
     </ClInclude>
     <ClInclude Include="include\impl\TimerSDL.h">
@@ -1054,6 +1048,8 @@
     <ClInclude Include="include\impl\GamepadSDL2.h">
       <Filter>Impl\Input</Filter>
     </ClInclude>
+    <ClInclude Include="include\impl\MutexSDL.h" />
+    <ClInclude Include="include\impl\ThreadSDL.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="sources\system\Container.cpp">
@@ -1479,9 +1475,6 @@
     <ClCompile Include="sources\impl\LowLevelSystemSDL.cpp">
       <Filter>Impl\System</Filter>
     </ClCompile>
-    <ClCompile Include="sources\impl\MutexWin32.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
     <ClCompile Include="sources\impl\PlatformWin32.cpp">
       <Filter>Impl\System</Filter>
     </ClCompile>
@@ -1495,9 +1488,6 @@
       <Filter>Impl\System</Filter>
     </ClCompile>
     <ClCompile Include="sources\impl\SqScript.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\impl\ThreadWin32.cpp">
       <Filter>Impl\System</Filter>
     </ClCompile>
     <ClCompile Include="sources\impl\TimerSDL.cpp">
@@ -1920,6 +1910,9 @@
     <ClCompile Include="sources\impl\GamepadSDL2.cpp">
       <Filter>Impl\Input</Filter>
     </ClCompile>
+    <ClCompile Include="sources\impl\MutexSDL.cpp" />
+    <ClCompile Include="sources\impl\PlatformSDL.cpp" />
+    <ClCompile Include="sources\impl\ThreadSDL.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="buildcounterinput.txt" />
